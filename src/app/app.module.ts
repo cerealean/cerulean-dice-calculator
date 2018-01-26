@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { HoverClassDirective } from './directives/hover-class/hover-class.directive';
+import { DiceCalculatorComponent } from './components/dice-calculator/dice-calculator.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HoverClassDirective
+    HoverClassDirective,
+    DiceCalculatorComponent
   ],
   imports: [
     BrowserModule,
