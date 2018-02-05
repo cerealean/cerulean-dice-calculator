@@ -1,20 +1,37 @@
 @import 'node_modules/bulma/bulma';
 
+#calculator {
+    margin: 0 auto;
+    width: 80%;
+}
+
 .dice-button-area {
     @extend .tile;
     @extend .is-ancestor;
     text-align: center;
 }
 
-.dice-button-area > div {
+.dice-button-area > a {
+    @extend .button;
     @extend .dice-button;
 }
 
 .dice-button{
     @extend .tile;
-    @extend .is-3;
-    border: 1px solid black;
-    border-radius: 25%;
+    @extend .is-4;
+    @extend .button;
     text-align: center;
     margin: 2px;
+    border: 1px solid black;
+}
+
+.equals-button{
+    @extend .tile;
+    @extend .button;
+    text-align: center;
+    margin: 2px;
+    border: 1px solid black;
+    vertical-align: middle;
+    align-content: center;
+    align-items: center;
 }
