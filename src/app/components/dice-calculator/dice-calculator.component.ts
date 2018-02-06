@@ -6,33 +6,45 @@ import { StringDiceCalculator } from '../../string-dice-calculator/string-dice-c
   styleUrls: ['./dice-calculator.component.scss']
 })
 export class DiceCalculatorComponent {
-  specialCharacters: string[] = ["D", "/", "+", "-", "x"];
+  specialCharacters: string[] = ["D", "/", "+", "-", "*"];
+  output:string = "0";
   stringToCalculate: string = "";
   previousStringToCalculate: string = "";
-  equalsKeyHit: boolean = false;
+  equalsKeyHit: boolean = true;
 
   public AddCharacter(char: string): void {
     if (this.equalsKeyHit === true) {
       this.equalsKeyHit = false;
       this.stringToCalculate = "";
+      this.output = "";
     }
     if (this.IsSpecialCharacter(char) && this.IsSpecialCharacter(this.stringToCalculate.slice(-1))) {
       return;
     }
     this.stringToCalculate += char;
+    this.output += char;
   }
 
   public Clear(): void {
+    this.previousStringToCalculate = "";
     this.stringToCalculate = "";
+    this.output = "";
+    this.equalsKeyHit = false;
   }
 
   public Calculate(): void {
-    if (this.equalsKeyHit === true) {
-      this.stringToCalculate = new StringDiceCalculator().CalculateFromString(this.previousStringToCalculate).toString();
+    let result:number = 0;
+    if(!this.stringToCalculate && !this.previousStringToCalculate){
+      this.output = "0";
+    }
+    else if (this.equalsKeyHit === true && this.previousStringToCalculate) {
+      result = new StringDiceCalculator().CalculateFromString(this.previousStringToCalculate);
+      this.output = this.stringToCalculate + "=" + result;
     }
     else {
       this.previousStringToCalculate = this.stringToCalculate;
-      this.stringToCalculate = new StringDiceCalculator().CalculateFromString(this.stringToCalculate).toString();
+      result = new StringDiceCalculator().CalculateFromString(this.stringToCalculate);
+      this.output = this.stringToCalculate + "=" + result;
       this.equalsKeyHit = true;
     }
   }

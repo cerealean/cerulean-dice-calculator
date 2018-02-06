@@ -3,7 +3,7 @@ import { DiceRoller } from "../dice-roller";
 export class StringDiceCalculator {
     diceCharacter: string = "D";
     diceRoller: DiceRoller = new DiceRoller();
-    operators = new RegExp(/\+|-|\/|x/);
+    operators = new RegExp(/\+|-|\/|\*/);
 
     public CalculateFromString(input: string): number {
         if (!input) {
@@ -39,7 +39,7 @@ export class StringDiceCalculator {
     private ThrowErrorIfInvalidStartOrEndOfStringGiven(input: string) {
         const lastCharacter = input.slice(-1);
         const firstCharacter = input.slice(0,1);
-        const disallowedFirstCharacters = new RegExp(/\/|x/);
+    const disallowedFirstCharacters = new RegExp(/\/|\*/);
         if (lastCharacter.match(this.operators) || lastCharacter == this.diceCharacter) {
             throw Error("Last character cannot be an operator or \"D\"");
         }

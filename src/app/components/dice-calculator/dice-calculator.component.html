@@ -2,7 +2,7 @@
   <div id="calculator" class="tile is-ancestor">
     <div class="tile is-parent calculated-output">
       <div class="tile is-child">
-        {{stringToCalculate}}
+        {{output}}
       </div>
     </div>
     <div class="tile is-parent" id="dice-buttons">
@@ -59,7 +59,7 @@
         <a class="vertical-button" (click)="AddCharacter('-')">
           -
         </a>
-        <a class="vertical-button" (click)="AddCharacter('x')">
+        <a class="vertical-button" (click)="AddCharacter('*')">
           X
         </a>
         <a class="vertical-button" (click)="AddCharacter('/')">
