@@ -1,37 +1,43 @@
 @import 'node_modules/bulma/bulma';
 
 #calculator {
+    @extend .box;
     margin: 0 auto;
-    width: 80%;
+    width: 60%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: $light;
 }
 
-.dice-button-area {
-    @extend .tile;
-    @extend .is-ancestor;
-    text-align: center;
-}
-
-.dice-button-area > a {
-    @extend .button;
-    @extend .dice-button;
+#calculator .tile .is-parent {
+    padding: 2px;
 }
 
 .dice-button{
     @extend .tile;
-    @extend .is-4;
     @extend .button;
+    @extend .is-info;
     text-align: center;
-    margin: 2px;
-    border: 1px solid black;
+    margin-left: 2px;
+    margin-right: 2px;
+    font-size: 3rem;
 }
 
-.equals-button{
+.vertical-button{
     @extend .tile;
     @extend .button;
+    @extend .is-warning;
+    font-size: 3rem;
     text-align: center;
     margin: 2px;
-    border: 1px solid black;
     vertical-align: middle;
     align-content: center;
     align-items: center;
+}
+
+.calculated-output {
+    @extend .tile;
+    background-color: $white;
+    margin: 0 auto;
+    font-size: 3rem;
+    min-height: 6rem;
 }
