@@ -5,12 +5,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dice-calculator.component.scss']
 })
 export class DiceCalculatorComponent {
-
   specialCharacters:string[] = ["D","/","+","-","x"];
-
   stringToCalculate:string = "";
-
-  constructor() { }
 
   public AddCharacter(char:string):void{
     if(this.IsSpecialCharacter(char) && this.IsSpecialCharacter(this.stringToCalculate.slice(-1))){
