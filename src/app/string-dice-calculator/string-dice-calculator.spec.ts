@@ -39,6 +39,15 @@ describe('StringDiceCalculator', () => {
       expect(actual).toBe(expectedValue);
     });
 
+    it('should return -8 if given -8', () => {
+      const givenValue = "-8";
+      const expectedValue = -8;
+
+      const actual = classUnderTest.CalculateFromString(givenValue);
+
+      expect(actual).toBe(expectedValue);
+    });
+
     it('should return 4 if given 2+2', () => {
       const givenValue = "2+2";
       const expectedValue = 4;

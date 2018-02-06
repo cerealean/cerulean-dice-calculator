@@ -32,7 +32,7 @@ export class StringDiceCalculator {
             return eval(convertedString);
         }
         else {
-            return convertedNumbers[0];
+            return startsNegative ? -convertedNumbers[0] : convertedNumbers[0];
         }
     }
 
