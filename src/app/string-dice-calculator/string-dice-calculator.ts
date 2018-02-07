@@ -9,8 +9,8 @@ export class StringDiceCalculator {
         if (!input) {
             return 0;
         }
-        let startsNegative = input.substr(0,1) === "-";
-        if(startsNegative){
+        let startsNegative = input.substr(0, 1) === "-";
+        if (startsNegative) {
             input = input.substr(1);
         }
         this.ThrowErrorIfInvalidStartOrEndOfStringGiven(input);
@@ -20,8 +20,7 @@ export class StringDiceCalculator {
         let convertedString = "";
 
         if (onlyOperators) {
-            if(startsNegative)
-            {
+            if (startsNegative) {
                 convertedString += "-";
             }
             for (let index = 0; index < onlyOperators.length; index++) {
@@ -38,8 +37,8 @@ export class StringDiceCalculator {
 
     private ThrowErrorIfInvalidStartOrEndOfStringGiven(input: string) {
         const lastCharacter = input.slice(-1);
-        const firstCharacter = input.slice(0,1);
-    const disallowedFirstCharacters = new RegExp(/\/|\*/);
+        const firstCharacter = input.slice(0, 1);
+        const disallowedFirstCharacters = new RegExp(/\/|\*/);
         if (lastCharacter.match(this.operators) || lastCharacter == this.diceCharacter) {
             throw Error("Last character cannot be an operator or \"D\"");
         }
