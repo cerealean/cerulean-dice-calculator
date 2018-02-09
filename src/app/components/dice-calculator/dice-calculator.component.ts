@@ -13,8 +13,13 @@ export class DiceCalculatorComponent {
   equalsKeyHit: boolean = true;
 
   public AddCharacter(char: string): void {
-    if(this.IsSpecialCharacter(char) && this.equalsKeyHit === true){
-      this.output = this.stringToCalculate;
+    const isContinuingFromLastCalculation = this.IsSpecialCharacter(char) && this.equalsKeyHit === true;
+    const isInputtingTwoSpecialCharactersInARow = this.IsSpecialCharacter(char) && this.IsSpecialCharacter(this.stringToCalculate.slice(-1));
+    if (isInputtingTwoSpecialCharactersInARow) {
+      return;
+    }
+    else if(isContinuingFromLastCalculation){
+      this.stringToCalculate = this.output;
       this.equalsKeyHit = false;
     }
     else if (this.equalsKeyHit === true) {
@@ -22,14 +27,9 @@ export class DiceCalculatorComponent {
       this.stringToCalculate = "";
       this.output = "";
     }
-    else if (this.IsSpecialCharacter(char) && this.IsSpecialCharacter(this.stringToCalculate.slice(-1))) {
-      return;
-    }
     this.stringToCalculate += char;
     this.output += char;
     this.equalsKeyHit = false;
-    console.log("Output: " + this.output);
-    console.log("stringtocalc: " + this.stringToCalculate);
   }
 
   public Clear(): void {
@@ -45,10 +45,12 @@ export class DiceCalculatorComponent {
       this.output = "0";
     }
     else if (this.equalsKeyHit === true && this.previousStringToCalculate) {
+      console.log("Calculating previous " + this.previousStringToCalculate);
       result = new StringDiceCalculator().CalculateFromString(this.previousStringToCalculate);
       this.output = result.toString();
     }
     else {
+      console.log("Calculating current " + this.stringToCalculate);
       this.previousStringToCalculate = this.stringToCalculate;
       result = new StringDiceCalculator().CalculateFromString(this.stringToCalculate);
       this.output = result.toString();
@@ -59,6 +61,7 @@ export class DiceCalculatorComponent {
   @HostListener('document:keypress', ['$event'])
   private HandleKeyboardInput(event:KeyboardEvent){
     const allowedCharacters = /[0-9]|(d|D|\.|\+|\-|\*|\/)/;
+    const returnKeyCode = 13;
 
     if(allowedCharacters.test(event.key)){
       if(event.key === "d"){
@@ -68,7 +71,7 @@ export class DiceCalculatorComponent {
         this.AddCharacter(event.key);
       }
     }
-    else if(event.which === 13){
+    else if(event.which === returnKeyCode){
       this.Calculate();
     }
   }

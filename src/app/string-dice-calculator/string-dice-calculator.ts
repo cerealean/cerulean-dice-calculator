@@ -16,7 +16,8 @@ export class StringDiceCalculator {
         this.ThrowErrorIfInvalidStartOrEndOfStringGiven(input);
         let numbersToCalculate = input.split(this.operators);
         const onlyOperators = input.match(this.operators);
-        const convertedNumbers: number[] = this.ConvertDiceValuesToNumbers(numbersToCalculate);
+        const convertedNumbers: number[][] = this.ConvertDiceValuesToNumbers(numbersToCalculate);
+        console.debug("Converted numbers are ", convertedNumbers);
         let convertedString = "";
 
         if (onlyOperators) {
@@ -24,15 +25,21 @@ export class StringDiceCalculator {
                 convertedString += "-";
             }
             for (let index = 0; index < onlyOperators.length; index++) {
-                convertedString += String(convertedNumbers[index]) + onlyOperators[index];
+                convertedString += String(this.SumNumbers(convertedNumbers[index])) + onlyOperators[index];
             }
-            convertedString += convertedNumbers[convertedNumbers.length - 1];
+            convertedString += this.SumNumbers(convertedNumbers[convertedNumbers.length - 1]);
 
+            console.debug("Converted string before eval is " + convertedString);
             return eval(convertedString);
         }
         else {
-            return startsNegative ? -convertedNumbers[0] : convertedNumbers[0];
+            const total = this.SumNumbers(convertedNumbers[0]);
+            return startsNegative ? -total : total;
         }
+    }
+
+    private SumNumbers(numbers:number[]):number{
+        return numbers.reduce((a,b) => a+b, 0);
     }
 
     private ThrowErrorIfInvalidStartOrEndOfStringGiven(input: string) {
@@ -47,37 +54,34 @@ export class StringDiceCalculator {
         }
     }
 
-    private ConvertDiceValuesToNumbers(values: string[]): number[] {
-        let convertedValues: number[] = [];
+    private ConvertDiceValuesToNumbers(values: string[]): number[][] {
+        let convertedValues:number[][] = [];
 
         for (let value of values) {
             let convertedValue: number;
             if (value.indexOf(this.diceCharacter) != -1) {
-                const total = this.ConvertDiceValueToNumber(value);
+                const total = this.ConvertDiceValueToNumbers(value);
                 convertedValues.push(total);
             }
             else {
-                convertedValues.push(Number(value));
+                convertedValues.push([Number(value)]);
             }
         }
 
+        console.log("Converted values:" + convertedValues.join(","))
         return convertedValues;
     }
 
-    private ConvertDiceValueToNumber(value: string): number {
+    private ConvertDiceValueToNumbers(value: string): number[] {
         let splitValue = value.split(this.diceCharacter);
         const numberOfDiceRolls = Number(splitValue[0]);
         const numberOfSides = Number(splitValue[1]);
-        let total = 0;
         if (splitValue.length > 2) {
             throw Error(value + " is an invalid value");
         }
-        for (let index = 0; index < numberOfDiceRolls; index++) {
-            const rolledValue: number = this.diceRoller.rollDice(numberOfSides);
-            total += rolledValue;
-        }
+        const diceRolls = this.diceRoller.rollDice(numberOfSides, numberOfDiceRolls);
 
-        return total;
+        return diceRolls;
     }
 
 }

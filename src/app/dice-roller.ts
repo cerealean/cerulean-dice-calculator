@@ -1,13 +1,22 @@
-import * as Random from 'random-js';
+import * as d3 from 'd3-random';
 export class DiceRoller {
     minimumDiceRoll:number = 1;
-    randomGenerator:any = new Random(Random.engines.mt19937().autoSeed());
 
-    public rollDice(numberOfSides:number):number {
-        return this.getRandomIntInclusive(this.minimumDiceRoll, numberOfSides);
+    public rollDie(numberOfSides:number):number {
+        const uniformRandomizer = d3.randomUniform(this.minimumDiceRoll, numberOfSides + 1);
+
+        return parseInt(uniformRandomizer());
     }
 
-    private getRandomIntInclusive(min, max):number {
-        return this.randomGenerator.integer(min, max);
+    public rollDice(numberOfSides:number, numberOfTimesToRoll:number):number[] {
+        const uniformRandomizer = d3.randomUniform(this.minimumDiceRoll, numberOfSides + 1);
+        let numberTotals = [];
+
+        for(let index = 0; index < numberOfTimesToRoll; index++){
+            const rolledValue = parseInt(uniformRandomizer());
+            numberTotals.push(rolledValue);
+        }
+
+        return numberTotals;
     }
 }
