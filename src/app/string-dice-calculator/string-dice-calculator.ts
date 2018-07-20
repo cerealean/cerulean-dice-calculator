@@ -29,7 +29,6 @@ export class StringDiceCalculator {
             }
             convertedString += this.SumNumbers(convertedNumbers[convertedNumbers.length - 1]);
 
-            console.debug("Converted string before eval is " + convertedString);
             return eval(convertedString);
         }
         else {
@@ -58,7 +57,6 @@ export class StringDiceCalculator {
         let convertedValues:number[][] = [];
 
         for (let value of values) {
-            let convertedValue: number;
             if (value.indexOf(this.diceCharacter) != -1) {
                 const total = this.ConvertDiceValueToNumbers(value);
                 convertedValues.push(total);
@@ -68,7 +66,6 @@ export class StringDiceCalculator {
             }
         }
 
-        console.log("Converted values:" + convertedValues.join(","))
         return convertedValues;
     }
 

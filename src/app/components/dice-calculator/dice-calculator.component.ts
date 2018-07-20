@@ -12,6 +12,12 @@ export class DiceCalculatorComponent {
   previousStringToCalculate: string = "";
   equalsKeyHit: boolean = true;
 
+  private readonly stringDiceCalculator = new StringDiceCalculator();
+
+  constructor(){
+
+  }
+
   public AddCharacter(char: string): void {
     const isContinuingFromLastCalculation = this.IsSpecialCharacter(char) && this.equalsKeyHit === true;
     const isInputtingTwoSpecialCharactersInARow = this.IsSpecialCharacter(char) && this.IsSpecialCharacter(this.stringToCalculate.slice(-1));
@@ -45,14 +51,12 @@ export class DiceCalculatorComponent {
       this.output = "0";
     }
     else if (this.equalsKeyHit === true && this.previousStringToCalculate) {
-      console.log("Calculating previous " + this.previousStringToCalculate);
-      result = new StringDiceCalculator().CalculateFromString(this.previousStringToCalculate);
+      result = this.stringDiceCalculator.CalculateFromString(this.previousStringToCalculate);
       this.output = result.toString();
     }
     else {
-      console.log("Calculating current " + this.stringToCalculate);
       this.previousStringToCalculate = this.stringToCalculate;
-      result = new StringDiceCalculator().CalculateFromString(this.stringToCalculate);
+      result = this.stringDiceCalculator.CalculateFromString(this.stringToCalculate);
       this.output = result.toString();
       this.equalsKeyHit = true;
     }

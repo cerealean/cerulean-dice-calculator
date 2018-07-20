@@ -64,3 +64,26 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+declare global {
+    interface Array<T> {
+        groupBy(keyGetter: (x:any) => any): Map<any,any>;
+    }
+}
+
+if (!Array.prototype.groupBy) {
+    Array.prototype.groupBy = function(keyGetter: (x:any) => any) {
+        const map = new Map();
+        this.forEach((item) => {
+            const key = keyGetter(item);
+            const collection = map.get(key);
+            if (!collection) {
+                map.set(key, [item]);
+            } else {
+                collection.push(item);
+            }
+        });
+
+        return map;
+    }
+}
