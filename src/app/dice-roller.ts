@@ -5,10 +5,10 @@ export class DiceRoller {
     private engine = randomjs.engines.mt19937().autoSeed();
 
     public rollDie(numberOfSides:number):number {
-        return randomjs.Random.die(numberOfSides)(this.engine);
+        return randomjs.die(numberOfSides)(this.engine);
     }
 
     public rollDice(numberOfSides:number, numberOfTimesToRoll:number):number[] {
-        return randomjs.Random.dice(numberOfSides, numberOfTimesToRoll)(this.engine);
+        return randomjs.dice(numberOfSides, numberOfTimesToRoll)(this.engine);
     }
 }
