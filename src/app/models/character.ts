@@ -13,6 +13,7 @@ export class Character {
     alignment: AlignmentName;
     experience: number;
     level: number;
+    isInspired: boolean;
 
     currentHealth: number;
     maxHealth: number;
@@ -27,6 +28,10 @@ export class Character {
 
     get passivePerception(): number {
         return 10 + this.getSkillValue(SkillName.Perception);
+    }
+
+    get initiative(): number {
+        return this.getAbilityScoreModifier(AbilityScoreName.Dexterity);
     }
 
     constructor() {
