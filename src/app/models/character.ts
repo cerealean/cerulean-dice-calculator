@@ -4,6 +4,7 @@ import { AbilityScoreName } from '../enums/ability-score-name';
 import { SkillName } from '../enums/skill-name';
 import { Skill } from './skill';
 import { AlignmentName } from '../enums/alignment-name';
+import { Item } from './item';
 
 export class Character {
     name: string;
@@ -19,6 +20,7 @@ export class Character {
     maxHealth: number;
     temporaryHealth: number;
 
+    private items: Item[];
     private abilityScores: Map<AbilityScoreName, AbilityScore>;
     private skills: Map<SkillName, Skill>;
 
