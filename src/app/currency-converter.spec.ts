@@ -3,7 +3,7 @@ import { CurrencyTypes } from './enums/currency-type';
 import { Currency } from './models/currency';
 import { ArgumentError } from './errors/argument-error';
 
-fdescribe('CurrencyConverter', () => {
+describe('CurrencyConverter', () => {
   it('should create an instance', () => {
     expect(new CurrencyConverter()).toBeTruthy();
   });
