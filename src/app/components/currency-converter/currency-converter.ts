@@ -1,6 +1,6 @@
-import { CurrencyTypes } from "./enums/currency-type";
-import { Currency } from "./models/currency";
-import { ArgumentError } from "./errors/argument-error";
+import { CurrencyTypes } from "../../enums/currency-type";
+import { Currency } from "../../models/currency";
+import { ArgumentError } from "../../errors/argument-error";
 
 export class CurrencyConverter {
     private value: number;

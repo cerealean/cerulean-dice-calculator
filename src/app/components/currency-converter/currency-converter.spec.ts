@@ -1,7 +1,7 @@
 import { CurrencyConverter } from './currency-converter';
-import { CurrencyTypes } from './enums/currency-type';
-import { Currency } from './models/currency';
-import { ArgumentError } from './errors/argument-error';
+import { CurrencyTypes } from '../../enums/currency-type';
+import { Currency } from '../../models/currency';
+import { ArgumentError } from '../../errors/argument-error';
 
 describe('CurrencyConverter', () => {
   it('should create an instance', () => {
