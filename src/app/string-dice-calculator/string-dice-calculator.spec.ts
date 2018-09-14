@@ -138,12 +138,5 @@ describe('StringDiceCalculator', () => {
       expect(() => classUnderTest.CalculateFromString(givenValue))
         .toThrowError();
     });
-    
-    it('should throw an error if x2 is given', () => {
-      const givenValue = "x2";
-
-      expect(() => classUnderTest.CalculateFromString(givenValue))
-        .toThrowError();
-    });
   });
 });
