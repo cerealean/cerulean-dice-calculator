@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { CurrencyTypes } from '../../enums/currency-type';
+import { Currency } from '../../models/currency';
+import { CurrencyConverter } from './currency-converter';
 
 @Component({
   selector: 'app-currency-converter',
   templateUrl: './currency-converter.component.html',
   styleUrls: ['./currency-converter.component.scss']
 })
-export class CurrencyConverterComponent implements OnInit {
+export class CurrencyConverterComponent {
+  public CurrencyTypesEnum = CurrencyTypes;
+  public convertTo = CurrencyTypes.Copper;
+  public convertFrom = CurrencyTypes.Copper;
+  public conversionValue: number;
+  public result: Currency;
 
   constructor() { }
 
-  ngOnInit() {
+  public calculate() {
+    this.result = new CurrencyConverter().convert(this.conversionValue, Number(this.convertFrom)).to(Number(this.convertTo));
   }
 
 }

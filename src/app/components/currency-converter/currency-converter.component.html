@@ -1,3 +1,67 @@
-<p>
-  currency-converter works!
-</p>
+<div class="field has-addons has-addons-centered">
+  <p class="control">
+    <a class="button is-static">
+      Convert
+    </a>
+  </p>
+  <p class="control">
+    <input class="input" type="number" placeholder="How much?" min="1" step="1" [(ngModel)]="conversionValue" />
+  </p>
+  <p class="control">
+    <span class="select">
+      <select [(ngModel)]="convertFrom">
+        <option [value]="CurrencyTypesEnum.Copper">Copper</option>
+        <option [value]="CurrencyTypesEnum.Silver">Silver</option>
+        <option [value]="CurrencyTypesEnum.Electrum">Electrum</option>
+        <option [value]="CurrencyTypesEnum.Gold">Gold</option>
+        <option [value]="CurrencyTypesEnum.Platinum">Platinum</option>
+      </select>
+    </span>
+  </p>
+  <p class="control">
+    <a class="button is-static">
+      To
+    </a>
+  </p>
+  <p class="control">
+    <span class="select">
+      <select [(ngModel)]="convertTo">
+        <option [value]="CurrencyTypesEnum.Copper">Copper</option>
+        <option [value]="CurrencyTypesEnum.Silver">Silver</option>
+        <option [value]="CurrencyTypesEnum.Electrum">Electrum</option>
+        <option [value]="CurrencyTypesEnum.Gold">Gold</option>
+        <option [value]="CurrencyTypesEnum.Platinum">Platinum</option>
+      </select>
+    </span>
+  </p>
+  <p class="control">
+    <button class="button is-primary" (click)="calculate()">Calculate</button>
+  </p>
+</div>
+<div class="field has-addons has-addons-centered" *ngIf="result">
+  <p class="control">
+    <a class="button is-static">
+      {{result.copper}}c
+    </a>
+  </p>
+  <p class="control">
+    <a class="button is-static">
+      {{result.silver}}s
+    </a>
+  </p>
+  <p class="control">
+    <a class="button is-static">
+      {{result.electrum}}e
+    </a>
+  </p>
+  <p class="control">
+    <a class="button is-static">
+      {{result.gold}}g
+    </a>
+  </p>
+  <p class="control">
+    <a class="button is-static">
+      {{result.platinum}}p
+    </a>
+  </p>
+</div>
