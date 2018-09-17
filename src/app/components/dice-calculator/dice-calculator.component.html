@@ -1,5 +1,5 @@
 <div class="box">
-  <div id="calculator" class="tile is-ancestor">
+  <div id="calculator" class="tile is-ancestor is-hidden-touch">
     <div class="tile is-parent calculated-output">
       <div class="tile is-child">
         {{output}}
@@ -72,5 +72,23 @@
         </a>
       </div>
     </div>
+  </div>
+  <div class="is-hidden-desktop">
+    <h1 class="title has-text-centered">Dice Calculator</h1>
+      <div class="field has-addons has-addons-centered">
+          <div class="control">
+              <input [(ngModel)]="output" class="input" type="text" pattern="/[0-9]|[\b]|[\+]|[\-]|[\/]|[\*]|[\=]/g" placeholder="Ex: 10D6+2" />
+            </div>
+          <div class="control">
+            <a class="button is-info" (click)="Calculate()">
+              Calculate
+            </a>
+          </div>
+          <div class="control">
+            <a class="button is-warning" (click)="Clear()">
+              Clear
+            </a>
+          </div>
+        </div>
   </div>
 </div>
