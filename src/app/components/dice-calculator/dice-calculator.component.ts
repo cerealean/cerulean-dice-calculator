@@ -12,6 +12,13 @@ export class DiceCalculatorComponent {
   previousStringToCalculate: string = "";
   equalsKeyHit: boolean = true;
 
+  private get isMobileMode(){
+    const calculatorElement = document.getElementById('calculator');
+    const isDesktopCalculatorHidden = calculatorElement.offsetParent === null;
+
+    return isDesktopCalculatorHidden;
+  }
+
   private readonly stringDiceCalculator = new StringDiceCalculator();
 
   constructor(){
@@ -34,7 +41,9 @@ export class DiceCalculatorComponent {
       this.output = "";
     }
     this.stringToCalculate += char;
-    this.output += char;
+    if(!this.isMobileMode){
+      this.output += char;
+    }
     this.equalsKeyHit = false;
   }
 
@@ -66,6 +75,7 @@ export class DiceCalculatorComponent {
   private HandleKeyboardInput(event:KeyboardEvent){
     const allowedCharacters = /[0-9]|(d|D|\.|\+|\-|\*|\/)/;
     const returnKeyCode = 13;
+    console.log("Key pressed is ", event.key);
 
     if(allowedCharacters.test(event.key)){
       if(event.key === "d"){

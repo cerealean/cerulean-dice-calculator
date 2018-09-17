@@ -4,14 +4,14 @@
       <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112"
         height="28">
     </a>
-    <div class="navbar-burger burger">
+    <div class="navbar-burger burger" #navbarBurger (click)="toggleMobileMenu()">
       <span></span>
       <span></span>
       <span></span>
     </div>
   </div>
 
-  <div class="navbar-menu">
+  <div class="navbar-menu" #navbarMenu>
     <div class="navbar-start">
       <a class="navbar-item" routerLink="dice-calculator">Dice Calculator</a>
       <a class="navbar-item" routerLink="currency-converter">Currency Converter</a>
