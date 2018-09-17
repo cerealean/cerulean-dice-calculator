@@ -75,7 +75,6 @@ export class DiceCalculatorComponent {
   private HandleKeyboardInput(event:KeyboardEvent){
     const allowedCharacters = /[0-9]|(d|D|\.|\+|\-|\*|\/)/;
     const returnKeyCode = 13;
-    console.log("Key pressed is ", event.key);
 
     if(allowedCharacters.test(event.key)){
       if(event.key === "d"){
