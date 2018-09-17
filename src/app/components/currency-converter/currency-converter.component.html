@@ -9,12 +9,19 @@
   </p>
   <p class="control">
     <span class="select">
-      <select [(ngModel)]="convertFrom">
+      <select class="is-hidden-touch" [(ngModel)]="convertFrom">
         <option [value]="CurrencyTypesEnum.Copper">Copper</option>
         <option [value]="CurrencyTypesEnum.Silver">Silver</option>
         <option [value]="CurrencyTypesEnum.Electrum">Electrum</option>
         <option [value]="CurrencyTypesEnum.Gold">Gold</option>
         <option [value]="CurrencyTypesEnum.Platinum">Platinum</option>
+      </select>
+      <select class="is-hidden-desktop" [(ngModel)]="convertFrom">
+        <option [value]="CurrencyTypesEnum.Copper">CP</option>
+        <option [value]="CurrencyTypesEnum.Silver">SP</option>
+        <option [value]="CurrencyTypesEnum.Electrum">EP</option>
+        <option [value]="CurrencyTypesEnum.Gold">GP</option>
+        <option [value]="CurrencyTypesEnum.Platinum">PP</option>
       </select>
     </span>
   </p>
@@ -25,14 +32,21 @@
   </p>
   <p class="control">
     <span class="select">
-      <select [(ngModel)]="convertTo">
-        <option [value]="CurrencyTypesEnum.Copper">Copper</option>
-        <option [value]="CurrencyTypesEnum.Silver">Silver</option>
-        <option [value]="CurrencyTypesEnum.Electrum">Electrum</option>
-        <option [value]="CurrencyTypesEnum.Gold">Gold</option>
-        <option [value]="CurrencyTypesEnum.Platinum">Platinum</option>
-      </select>
-    </span>
+        <select class="is-hidden-touch" [(ngModel)]="convertTo">
+            <option [value]="CurrencyTypesEnum.Copper">Copper</option>
+            <option [value]="CurrencyTypesEnum.Silver">Silver</option>
+            <option [value]="CurrencyTypesEnum.Electrum">Electrum</option>
+            <option [value]="CurrencyTypesEnum.Gold">Gold</option>
+            <option [value]="CurrencyTypesEnum.Platinum">Platinum</option>
+          </select>
+          <select class="is-hidden-desktop" [(ngModel)]="convertTo">
+            <option [value]="CurrencyTypesEnum.Copper">CP</option>
+            <option [value]="CurrencyTypesEnum.Silver">SP</option>
+            <option [value]="CurrencyTypesEnum.Electrum">EP</option>
+            <option [value]="CurrencyTypesEnum.Gold">GP</option>
+            <option [value]="CurrencyTypesEnum.Platinum">PP</option>
+          </select>
+        </span>
   </p>
   <p class="control">
     <button class="button is-primary" (click)="calculate()">Calculate</button>
