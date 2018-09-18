@@ -8,7 +8,6 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 export class AppComponent {
   @ViewChild('navbarBurger') navbarBurgerElement: ElementRef;
   @ViewChild('navbarMenu') navbarMenuElement: ElementRef;
-  title = 'app';
 
   toggleMobileMenu(){
     (<HTMLElement>this.navbarBurgerElement.nativeElement).classList.toggle('is-active');

@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { HoverClassDirective } from './directives/hover-class/hover-class.directive';
 import { DiceCalculatorComponent } from './components/dice-calculator/dice-calculator.component';
 import { CurrencyConverterComponent } from './components/currency-converter/currency-converter.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CurrencyConverterComponent } from './components/currency-converter/curr
     AppComponent,
     HoverClassDirective,
     DiceCalculatorComponent,
-    CurrencyConverterComponent
+    CurrencyConverterComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
