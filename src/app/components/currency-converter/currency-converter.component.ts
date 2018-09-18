@@ -18,7 +18,7 @@ export class CurrencyConverterComponent {
   constructor() { }
 
   public calculate() {
-    this.result = new CurrencyConverter().convert(this.conversionValue, Number(this.convertFrom)).to(Number(this.convertTo));
+    this.result = new CurrencyConverter().convert(this.conversionValue || 0, Number(this.convertFrom)).to(Number(this.convertTo));
   }
 
 }
