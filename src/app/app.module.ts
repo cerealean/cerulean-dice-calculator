@@ -9,6 +9,7 @@ import { HoverClassDirective } from './directives/hover-class/hover-class.direct
 import { DiceCalculatorComponent } from './components/dice-calculator/dice-calculator.component';
 import { CurrencyConverterComponent } from './components/currency-converter/currency-converter.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { CharacterSheetComponent } from './components/character-sheet/character-sheet.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ChatComponent } from './components/chat/chat.component';
     HoverClassDirective,
     DiceCalculatorComponent,
     CurrencyConverterComponent,
-    ChatComponent
+    ChatComponent,
+    CharacterSheetComponent
   ],
   imports: [
     BrowserModule,
