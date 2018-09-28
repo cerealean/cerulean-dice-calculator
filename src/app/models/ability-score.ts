@@ -1,4 +1,4 @@
-import * as abilityScoreModifiers from './../resources/abilityScoreModifiers.json';
+import * as abilityScoreModifiers from './../resources/ability-score-modifiers.json';
 import { AbilityScoreName } from '../enums/ability-score-name';
 
 export class AbilityScore {

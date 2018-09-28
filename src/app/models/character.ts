@@ -1,4 +1,4 @@
-import * as proficiencyBonuses from './../resources/proficiencyBonuses.json';
+import * as proficiencyBonuses from './../resources/proficiency-bonuses.json';
 import { AbilityScore } from './ability-score';
 import { AbilityScoreName } from '../enums/ability-score-name';
 import { SkillName } from '../enums/skill-name';

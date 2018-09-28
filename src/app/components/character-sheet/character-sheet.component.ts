@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { Character } from '../../models/character';
 
 @Component({
   selector: 'app-character-sheet',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CharacterSheetComponent implements OnInit {
 
+  @Input() character?: Character;
+
   constructor() { }
 
   ngOnInit() {
+    if (!this.character) {
+      this.character = new Character();
+    }
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  onkeypress($event: KeyboardEvent) {
+    if ($event.ctrlKey && $event.key.toLowerCase() === 's') {
+      console.log(this.character);
+      $event.preventDefault();
+      return false;  
+    }
   }
 
 }

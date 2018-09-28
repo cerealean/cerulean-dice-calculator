@@ -1,3 +1,58 @@
-<p>
-  character-sheet works!
-</p>
+<div class="container is-fluid">
+  <div class="section">
+    <h1 class="title">
+      Character Designer
+    </h1>
+    <div class="field">
+      <div class="control is-expanded">
+        <input type="text" class="input is-rounded is-medium" required [(ngModel)]="character.name" placeholder="Character Name" />
+      </div>
+    </div>
+    <div class="tile is-ancestor">
+      <div class="tile is-3 is-vertical">
+        <div class="tile is-parent">
+          <div class="tile is-child">
+            <div class="field">
+              <div class="control">
+                <input type="text" class="input is-rounded" placeholder="Race" [(ngModel)]="character.race" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tile is-3 is-vertical">
+        <div class="tile is-parent">
+          <div class="tile is-child">
+            <div class="field">
+              <div class="control">
+                <input type="text" class="input is-rounded" placeholder="Class" [(ngModel)]="character.class" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tile is-3 is-vertical">
+        <div class="tile is-parent">
+          <div class="tile is-child">
+            <div class="field">
+              <div class="control">
+                <input type="text" class="input is-rounded" placeholder="Alignment" [(ngModel)]="character.alignment" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tile is-3 is-vertical">
+        <div class="tile is-parent">
+          <div class="tile is-child">
+            <div class="field">
+              <div class="control">
+                <input type="text" class="input is-rounded" placeholder="Player Name" [(ngModel)]="character.playerName" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
