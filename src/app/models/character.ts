@@ -23,6 +23,8 @@ export class Character {
     private items: Item[];
     private abilityScores: Map<AbilityScoreName, AbilityScore>;
     private skills: Map<SkillName, Skill>;
+    private minSkillValue = 8;
+    private maxSkillValue = 20;
 
     get proficiencyBonus(): number {
         return proficiencyBonuses[this.level];
@@ -38,12 +40,12 @@ export class Character {
 
     constructor() {
         this.abilityScores = new Map<AbilityScoreName, AbilityScore>([
-            [AbilityScoreName.Strength, new AbilityScore(AbilityScoreName.Strength, 0)],
-            [AbilityScoreName.Dexterity, new AbilityScore(AbilityScoreName.Dexterity, 0)],
-            [AbilityScoreName.Constitution, new AbilityScore(AbilityScoreName.Constitution, 0)],
-            [AbilityScoreName.Intelligence, new AbilityScore(AbilityScoreName.Intelligence, 0)],
-            [AbilityScoreName.Wisdom, new AbilityScore(AbilityScoreName.Wisdom, 0)],
-            [AbilityScoreName.Charisma, new AbilityScore(AbilityScoreName.Charisma, 0)]
+            [AbilityScoreName.Strength, new AbilityScore(AbilityScoreName.Strength, this.minSkillValue)],
+            [AbilityScoreName.Dexterity, new AbilityScore(AbilityScoreName.Dexterity, this.minSkillValue)],
+            [AbilityScoreName.Constitution, new AbilityScore(AbilityScoreName.Constitution, this.minSkillValue)],
+            [AbilityScoreName.Intelligence, new AbilityScore(AbilityScoreName.Intelligence, this.minSkillValue)],
+            [AbilityScoreName.Wisdom, new AbilityScore(AbilityScoreName.Wisdom, this.minSkillValue)],
+            [AbilityScoreName.Charisma, new AbilityScore(AbilityScoreName.Charisma, this.minSkillValue)]
         ]);
 
         this.skills = new Map<SkillName, Skill>([
@@ -70,6 +72,10 @@ export class Character {
 
     public getAbilityScoreValue(name: AbilityScoreName): number {
         return this.getAbilityScore(name).value;
+    }
+
+    public setAbilityScoreValue(name: AbilityScoreName, newValue: number): void {
+        this.getAbilityScore(name).value = newValue;
     }
 
     public getAbilityScoreModifier(name: AbilityScoreName): number {

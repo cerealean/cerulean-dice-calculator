@@ -9,6 +9,117 @@
       </div>
     </div>
     <div class="tile is-ancestor">
+
+      <!--Ability Scores-->
+      <div class="tile is-2 is-vertical">
+        <div class="tile">
+          <div class="tile is-parent is-vertical">
+            <!--Strength-->
+            <div class="tile is-child">
+              <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label fixed-ability-score-label">Str</label>
+                </div>
+                <div class="field-body">
+                  <div class="control is-expanded">
+                    <input type="number" class="input is-rounded has-text-centered" required min="8" max="20" [value]="character.getAbilityScoreValue(AbilityScoreName.Strength)"
+                      (change)="setAbilityScoreValue($event, AbilityScoreName.Strength)" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--Dexterity-->
+            <div class="tile is-child">
+              <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label fixed-ability-score-label">Dex</label>
+                </div>
+                <div class="field-body">
+                  <div class="control is-expanded">
+                    <input type="number" class="input is-rounded has-text-centered" required min="8" max="20" [value]="character.getAbilityScoreValue(AbilityScoreName.Dexterity)"
+                      (change)="setAbilityScoreValue($event, AbilityScoreName.Dexterity)" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--Constitution-->
+            <div class="tile is-child">
+              <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label fixed-ability-score-label">Con</label>
+                </div>
+                <div class="field-body">
+                  <div class="control is-expanded">
+                    <input type="number" class="input is-rounded has-text-centered" required min="8" max="20" [value]="character.getAbilityScoreValue(AbilityScoreName.Constitution)"
+                      (change)="setAbilityScoreValue($event, AbilityScoreName.Constitution)" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--Intelligence-->
+            <div class="tile is-child">
+              <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label fixed-ability-score-label">Int</label>
+                </div>
+                <div class="field-body">
+                  <div class="control is-expanded">
+                    <input type="number" class="input is-rounded has-text-centered" required min="8" max="20" [value]="character.getAbilityScoreValue(AbilityScoreName.Intelligence)"
+                      (change)="setAbilityScoreValue($event, AbilityScoreName.Intelligence)" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--Wisdom-->
+            <div class="tile is-child">
+              <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label fixed-ability-score-label">Wis</label>
+                </div>
+                <div class="field-body">
+                  <div class="control is-expanded">
+                    <input type="number" class="input is-rounded has-text-centered" required min="8" max="20" [value]="character.getAbilityScoreValue(AbilityScoreName.Wisdom)"
+                      (change)="setAbilityScoreValue($event, AbilityScoreName.Wisdom)" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--Charisma-->
+            <div class="tile is-child">
+              <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label fixed-ability-score-label">Cha</label>
+                </div>
+                <div class="field-body">
+                  <div class="control is-expanded">
+                    <input type="number" class="input is-rounded has-text-centered" required min="8" max="20" [value]="character.getAbilityScoreValue(AbilityScoreName.Charisma)"
+                      (change)="setAbilityScoreValue($event, AbilityScoreName.Charisma)" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tile is-3 is-vertical">
+        <div class="tile is-parent">
+          <div class="tile is-child">
+            <div class="field">
+              <div class="control">
+                <input type="text" #playerName="ngModel" [class.is-danger]="(playerName.touched || playerName.dirty) && playerName.errors" (click)="sunshine(playerName)" required class="input paper-input" placeholder="Player Name" [(ngModel)]="character.playerName" />
+              </div>
+              <p class="help" [class.is-danger]="(playerName.touched || playerName.dirty) && playerName.errors" [class.is-success]="(playerName.touched || playerName.dirty) && !playerName.errors" [class.is-hidden]="!playerName.touched">Player Name</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="tile is-3 is-vertical">
         <div class="tile is-parent">
           <div class="tile is-child">
@@ -20,7 +131,7 @@
           </div>
         </div>
       </div>
-      <div class="tile is-3 is-vertical">
+      <div class="tile is-2 is-vertical">
         <div class="tile is-parent">
           <div class="tile is-child">
             <div class="field">
@@ -31,23 +142,12 @@
           </div>
         </div>
       </div>
-      <div class="tile is-3 is-vertical">
+      <div class="tile is-2 is-vertical">
         <div class="tile is-parent">
           <div class="tile is-child">
             <div class="field">
               <div class="control">
                 <input type="text" class="input is-rounded" placeholder="Alignment" [(ngModel)]="character.alignment" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="tile is-3 is-vertical">
-        <div class="tile is-parent">
-          <div class="tile is-child">
-            <div class="field">
-              <div class="control">
-                <input type="text" class="input is-rounded" placeholder="Player Name" [(ngModel)]="character.playerName" />
               </div>
             </div>
           </div>
