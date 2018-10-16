@@ -39,10 +39,5 @@ export class CharacterSheetComponent implements OnInit {
       throw new Error('Invalid entry: ' + value);
     }
     this.character.setAbilityScoreValue(name, Number(value));
-  }
-
-  sunshine(something){
-    console.log(something); 
-  }
 
 }
