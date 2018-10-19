@@ -10,6 +10,7 @@ import { DiceCalculatorComponent } from './components/dice-calculator/dice-calcu
 import { CurrencyConverterComponent } from './components/currency-converter/currency-converter.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { CharacterSheetComponent } from './components/character-sheet/character-sheet.component';
+import { EnumToArrayPipe } from './pipes/enum-to-array.pipe';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { CharacterSheetComponent } from './components/character-sheet/character-
     DiceCalculatorComponent,
     CurrencyConverterComponent,
     ChatComponent,
-    CharacterSheetComponent
+    CharacterSheetComponent,
+    EnumToArrayPipe
   ],
   imports: [
     BrowserModule,

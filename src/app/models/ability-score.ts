@@ -9,7 +9,7 @@ export class AbilityScore {
     }
 
     get modifier(){
-        return abilityScoreModifiers[this.value];
+        return abilityScoreModifiers.default[this.value];
     }
 
     get savingThrow(){

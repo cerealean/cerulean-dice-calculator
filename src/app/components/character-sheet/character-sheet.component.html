@@ -16,7 +16,7 @@
           <div class="tile is-parent is-vertical">
             <!--Strength-->
             <div class="tile is-child">
-              <div class="field is-horizontal">
+              <div class="field is-horizontal has-addons">
                 <div class="field-label is-normal">
                   <label class="label fixed-ability-score-label">Str</label>
                 </div>
@@ -25,13 +25,16 @@
                     <input type="number" class="input is-rounded has-text-centered" required min="8" max="20" [value]="character.getAbilityScoreValue(AbilityScoreName.Strength)"
                       (change)="setAbilityScoreValue($event, AbilityScoreName.Strength)" />
                   </div>
+                  <div class="control" title="Strength Modifier">
+                    <a class="button is-static is-rounded">{{getAbilityScoreModifier(AbilityScoreName.Strength)}}</a>
+                  </div>
                 </div>
               </div>
             </div>
 
             <!--Dexterity-->
             <div class="tile is-child">
-              <div class="field is-horizontal">
+              <div class="field is-horizontal has-addons">
                 <div class="field-label is-normal">
                   <label class="label fixed-ability-score-label">Dex</label>
                 </div>
@@ -40,13 +43,16 @@
                     <input type="number" class="input is-rounded has-text-centered" required min="8" max="20" [value]="character.getAbilityScoreValue(AbilityScoreName.Dexterity)"
                       (change)="setAbilityScoreValue($event, AbilityScoreName.Dexterity)" />
                   </div>
+                  <div class="control" title="Dexterity Modifier">
+                    <a class="button is-static is-rounded">{{getAbilityScoreModifier(AbilityScoreName.Dexterity)}}</a>
+                  </div>
                 </div>
               </div>
             </div>
 
             <!--Constitution-->
             <div class="tile is-child">
-              <div class="field is-horizontal">
+              <div class="field is-horizontal has-addons">
                 <div class="field-label is-normal">
                   <label class="label fixed-ability-score-label">Con</label>
                 </div>
@@ -55,13 +61,16 @@
                     <input type="number" class="input is-rounded has-text-centered" required min="8" max="20" [value]="character.getAbilityScoreValue(AbilityScoreName.Constitution)"
                       (change)="setAbilityScoreValue($event, AbilityScoreName.Constitution)" />
                   </div>
+                  <div class="control" title="Constitution Modifier">
+                    <a class="button is-static is-rounded">{{getAbilityScoreModifier(AbilityScoreName.Constitution)}}</a>
+                  </div>
                 </div>
               </div>
             </div>
 
             <!--Intelligence-->
             <div class="tile is-child">
-              <div class="field is-horizontal">
+              <div class="field is-horizontal has-addons">
                 <div class="field-label is-normal">
                   <label class="label fixed-ability-score-label">Int</label>
                 </div>
@@ -70,13 +79,16 @@
                     <input type="number" class="input is-rounded has-text-centered" required min="8" max="20" [value]="character.getAbilityScoreValue(AbilityScoreName.Intelligence)"
                       (change)="setAbilityScoreValue($event, AbilityScoreName.Intelligence)" />
                   </div>
+                  <div class="control" title="Intelligence Modifier">
+                    <a class="button is-static is-rounded">{{getAbilityScoreModifier(AbilityScoreName.Intelligence)}}</a>
+                  </div>
                 </div>
               </div>
             </div>
 
             <!--Wisdom-->
             <div class="tile is-child">
-              <div class="field is-horizontal">
+              <div class="field is-horizontal has-addons">
                 <div class="field-label is-normal">
                   <label class="label fixed-ability-score-label">Wis</label>
                 </div>
@@ -85,13 +97,16 @@
                     <input type="number" class="input is-rounded has-text-centered" required min="8" max="20" [value]="character.getAbilityScoreValue(AbilityScoreName.Wisdom)"
                       (change)="setAbilityScoreValue($event, AbilityScoreName.Wisdom)" />
                   </div>
+                  <div class="control" title="Wisdom Modifier">
+                    <a class="button is-static is-rounded">{{getAbilityScoreModifier(AbilityScoreName.Wisdom)}}</a>
+                  </div>
                 </div>
               </div>
             </div>
 
             <!--Charisma-->
             <div class="tile is-child">
-              <div class="field is-horizontal">
+              <div class="field is-horizontal has-addons">
                 <div class="field-label is-normal">
                   <label class="label fixed-ability-score-label">Cha</label>
                 </div>
@@ -100,21 +115,11 @@
                     <input type="number" class="input is-rounded has-text-centered" required min="8" max="20" [value]="character.getAbilityScoreValue(AbilityScoreName.Charisma)"
                       (change)="setAbilityScoreValue($event, AbilityScoreName.Charisma)" />
                   </div>
+                  <div class="control" title="Charisma Modifier">
+                    <a class="button is-static is-rounded">{{getAbilityScoreModifier(AbilityScoreName.Charisma)}}</a>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="tile is-3 is-vertical">
-        <div class="tile is-parent">
-          <div class="tile is-child">
-            <div class="field">
-              <div class="control">
-                <input type="text" #playerName="ngModel" [class.is-danger]="(playerName.touched || playerName.dirty) && playerName.errors" (click)="sunshine(playerName)" required class="input paper-input" placeholder="Player Name" [(ngModel)]="character.playerName" />
-              </div>
-              <p class="help" [class.is-danger]="(playerName.touched || playerName.dirty) && playerName.errors" [class.is-success]="(playerName.touched || playerName.dirty) && !playerName.errors" [class.is-hidden]="!playerName.touched">Player Name</p>
             </div>
           </div>
         </div>
@@ -125,29 +130,67 @@
           <div class="tile is-child">
             <div class="field">
               <div class="control">
-                <input type="text" class="input is-rounded" placeholder="Race" [(ngModel)]="character.race" />
+                <input type="text" #playerName="ngModel" [class.is-danger]="(playerName.touched || playerName.dirty) && playerName.errors"
+                  required class="input paper-input" placeholder="Player Name" [(ngModel)]="character.playerName" />
+              </div>
+              <p class="help" [class.is-danger]="(playerName.touched || playerName.dirty) && playerName.errors"
+                [class.is-success]="(playerName.touched || playerName.dirty) && !playerName.errors" [class.is-hidden]="!playerName.touched">Player
+                Name</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tile is-3 is-vertical">
+        <div class="tile is-parent">
+          <div class="tile is-child">
+            <div class="field">
+              <div class="control">
+                <div class="select is-fullwidth">
+                  <select #playerRace="ngModel" required [(ngModel)]="character.race" class="paper-input">
+                    <option *ngFor="let race of races" [ngValue]="race">{{race.name}}</option>
+                  </select>
+                </div>
+                <p class="help" [class.is-danger]="(playerRace.touched || playerRace.dirty) && playerRace.errors"
+                  [class.is-success]="(playerRace.touched || playerRace.dirty) && !playerRace.errors" [class.is-hidden]="!playerRace.touched">Race</p>
               </div>
             </div>
           </div>
         </div>
       </div>
+
       <div class="tile is-2 is-vertical">
         <div class="tile is-parent">
           <div class="tile is-child">
             <div class="field">
               <div class="control">
-                <input type="text" class="input is-rounded" placeholder="Class" [(ngModel)]="character.class" />
+                <div class="select is-fullwidth">
+                  <select #playerClass="ngModel" required [(ngModel)]="character.class" class="paper-input">
+                    <option *ngFor="let class of classes" [ngValue]="class">{{class.name}}</option>
+                  </select>
+                </div>
+                <p class="help" [class.is-danger]="(playerClass.touched || playerClass.dirty) && playerClass.errors"
+                  [class.is-success]="(playerClass.touched || playerClass.dirty) && !playerClass.errors"
+                  [class.is-hidden]="!playerClass.touched">Class</p>
               </div>
             </div>
           </div>
         </div>
       </div>
+
       <div class="tile is-2 is-vertical">
         <div class="tile is-parent">
           <div class="tile is-child">
             <div class="field">
               <div class="control">
-                <input type="text" class="input is-rounded" placeholder="Alignment" [(ngModel)]="character.alignment" />
+                <div class="select is-fullwidth">
+                  <select #playerAlignment="ngModel" required [(ngModel)]="character.alignment" class="paper-input">
+                    <option *ngFor="let alignment of AlignmentName | enumToArray" [ngValue]="alignment">{{AlignmentName[alignment]}}</option>
+                  </select>
+                </div>
+                <p class="help" [class.is-danger]="(playerAlignment.touched || playerAlignment.dirty) && playerAlignment.errors"
+                  [class.is-success]="(playerAlignment.touched || playerAlignment.dirty) && !playerAlignment.errors"
+                  [class.is-hidden]="!playerAlignment.touched">Alignment</p>
               </div>
             </div>
           </div>

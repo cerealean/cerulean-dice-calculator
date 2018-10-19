@@ -5,12 +5,14 @@ import { SkillName } from '../enums/skill-name';
 import { Skill } from './skill';
 import { AlignmentName } from '../enums/alignment-name';
 import { Item } from './item';
+import { Race } from './race.js';
+import { Class } from './class.js';
 
 export class Character {
     name: string;
     playerName: string;
-    race: string;
-    class: string;
+    race: Race;
+    class: Class;
     alignment: AlignmentName;
     experience: number;
     level: number;
