@@ -22,7 +22,10 @@ export class Character {
     maxHealth: number;
     temporaryHealth: number;
 
-    private items: Item[];
+    private _items: Item[] = [];
+    get items(): Item[] {
+        return this._items;
+    }
     private abilityScores: Map<AbilityScoreName, AbilityScore>;
     private skills: Map<SkillName, Skill>;
     private minSkillValue = 8;

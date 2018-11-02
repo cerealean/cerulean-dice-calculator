@@ -1,9 +1,11 @@
-import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { Component, OnInit, Input, HostListener, ElementRef, ViewChild } from '@angular/core';
 import { Character } from '../../models/character';
 import { AbilityScoreName } from '../../enums/ability-score-name';
 import { races } from '../../resources/races';
 import { classes } from '../../resources/classes';
 import { AlignmentName } from '../../enums/alignment-name';
+import { items } from '../../resources/items';
+import { Item } from '../../models/item';
 
 @Component({
   selector: 'app-character-sheet',
@@ -15,13 +17,18 @@ export class CharacterSheetComponent implements OnInit {
   public AlignmentName = AlignmentName;
   public races = races;
   public classes = classes;
+  public items = items;
   @Input() character?: Character;
+
+  @ViewChild('itemInput') itemInputElement: ElementRef<HTMLInputElement>;
 
   constructor() { }
 
   ngOnInit() {
     if (!this.character) {
       this.character = new Character();
+      this.character.race = this.races[0];
+      this.character.class = this.classes[0];
     }
   }
 
@@ -49,6 +56,15 @@ export class CharacterSheetComponent implements OnInit {
       throw new Error('Invalid entry: ' + value);
     }
     this.character.setAbilityScoreValue(name, Number(value));
+  }
+
+  addItem(itemName: string, itemInput: HTMLInputElement){
+    const itemToAdd = this.items.find(item => item.name === itemName);
+    if(!itemToAdd){
+      throw new Error(`Item ${itemName} not found`);
+    }
+    this.character.items.push(itemToAdd);
+    this.itemInputElement.nativeElement.value = "";
   }
 
 }

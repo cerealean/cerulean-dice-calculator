@@ -10,7 +10,7 @@
     </div>
     <div class="tile is-ancestor">
 
-      <!--Ability Scores-->
+      <!--First Column - Ability Scores-->
       <div class="tile is-2 is-vertical">
         <div class="tile">
           <div class="tile is-parent is-vertical">
@@ -26,7 +26,7 @@
                       (change)="setAbilityScoreValue($event, AbilityScoreName.Strength)" />
                   </div>
                   <div class="control" title="Strength Modifier">
-                    <a class="button is-static is-rounded">{{getAbilityScoreModifier(AbilityScoreName.Strength)}}</a>
+                    <a class="button is-static is-rounded ability-score-modifier">{{getAbilityScoreModifier(AbilityScoreName.Strength)}}</a>
                   </div>
                 </div>
               </div>
@@ -44,7 +44,7 @@
                       (change)="setAbilityScoreValue($event, AbilityScoreName.Dexterity)" />
                   </div>
                   <div class="control" title="Dexterity Modifier">
-                    <a class="button is-static is-rounded">{{getAbilityScoreModifier(AbilityScoreName.Dexterity)}}</a>
+                    <a class="button is-static is-rounded ability-score-modifier">{{getAbilityScoreModifier(AbilityScoreName.Dexterity)}}</a>
                   </div>
                 </div>
               </div>
@@ -62,7 +62,7 @@
                       (change)="setAbilityScoreValue($event, AbilityScoreName.Constitution)" />
                   </div>
                   <div class="control" title="Constitution Modifier">
-                    <a class="button is-static is-rounded">{{getAbilityScoreModifier(AbilityScoreName.Constitution)}}</a>
+                    <a class="button is-static is-rounded ability-score-modifier">{{getAbilityScoreModifier(AbilityScoreName.Constitution)}}</a>
                   </div>
                 </div>
               </div>
@@ -80,7 +80,7 @@
                       (change)="setAbilityScoreValue($event, AbilityScoreName.Intelligence)" />
                   </div>
                   <div class="control" title="Intelligence Modifier">
-                    <a class="button is-static is-rounded">{{getAbilityScoreModifier(AbilityScoreName.Intelligence)}}</a>
+                    <a class="button is-static is-rounded ability-score-modifier">{{getAbilityScoreModifier(AbilityScoreName.Intelligence)}}</a>
                   </div>
                 </div>
               </div>
@@ -98,7 +98,7 @@
                       (change)="setAbilityScoreValue($event, AbilityScoreName.Wisdom)" />
                   </div>
                   <div class="control" title="Wisdom Modifier">
-                    <a class="button is-static is-rounded">{{getAbilityScoreModifier(AbilityScoreName.Wisdom)}}</a>
+                    <a class="button is-static is-rounded ability-score-modifier">{{getAbilityScoreModifier(AbilityScoreName.Wisdom)}}</a>
                   </div>
                 </div>
               </div>
@@ -116,7 +116,7 @@
                       (change)="setAbilityScoreValue($event, AbilityScoreName.Charisma)" />
                   </div>
                   <div class="control" title="Charisma Modifier">
-                    <a class="button is-static is-rounded">{{getAbilityScoreModifier(AbilityScoreName.Charisma)}}</a>
+                    <a class="button is-static is-rounded ability-score-modifier">{{getAbilityScoreModifier(AbilityScoreName.Charisma)}}</a>
                   </div>
                 </div>
               </div>
@@ -125,7 +125,9 @@
         </div>
       </div>
 
+      <!--Second Column-->
       <div class="tile is-3 is-vertical">
+        <!--Player Name-->
         <div class="tile is-parent">
           <div class="tile is-child">
             <div class="field">
@@ -136,6 +138,36 @@
               <p class="help" [class.is-danger]="(playerName.touched || playerName.dirty) && playerName.errors"
                 [class.is-success]="(playerName.touched || playerName.dirty) && !playerName.errors" [class.is-hidden]="!playerName.touched">Player
                 Name</p>
+            </div>
+          </div>
+        </div>
+
+        <!--Items-->
+        <div class="tile is-parent">
+          <div class="tile is-child">
+            <div class="field">
+              <div class="control">
+                <div class="select is-multiple is-fullwidth">
+                  <select #playerItems="ngModel" [(ngModel)]="character.items" multiple size="7">
+                    <option disabled class="has-text-weight-bold has-text-centered">Items</option>
+                    <option *ngFor="let item of character.items" [ngValue]="item" [title]="item.name">{{item.name}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="field has-addons">
+              <div class="control has-icons-left">
+                <input class="input" type="text" placeholder="Add Item" list="items-list" #itemInput />
+                <datalist id="items-list">
+                  <option *ngFor="let item of items" [value]="item.name">
+                </datalist>
+                <span class="icon is-small is-left has-text-success">
+                  <i class="fas fa-plus"></i>
+                </span>
+              </div>
+              <div class="control">
+                <button class="button is-info" (click)="addItem(itemInput.value)">Add</button>
+              </div>
             </div>
           </div>
         </div>
