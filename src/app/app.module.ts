@@ -11,6 +11,7 @@ import { CurrencyConverterComponent } from './components/currency-converter/curr
 import { ChatComponent } from './components/chat/chat.component';
 import { CharacterSheetComponent } from './components/character-sheet/character-sheet.component';
 import { EnumToArrayPipe } from './pipes/enum-to-array.pipe';
+import { ItemContextMenuComponent } from './components/character-sheet/item-context-menu/item-context-menu.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { EnumToArrayPipe } from './pipes/enum-to-array.pipe';
     CurrencyConverterComponent,
     ChatComponent,
     CharacterSheetComponent,
-    EnumToArrayPipe
+    EnumToArrayPipe,
+    ItemContextMenuComponent
   ],
   imports: [
     BrowserModule,

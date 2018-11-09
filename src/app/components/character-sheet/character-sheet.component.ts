@@ -18,9 +18,12 @@ export class CharacterSheetComponent implements OnInit {
   public races = races;
   public classes = classes;
   public items = items;
+  public shouldShowItemsContextMenu = false;
+
   @Input() character?: Character;
 
   @ViewChild('itemInput') itemInputElement: ElementRef<HTMLInputElement>;
+  @ViewChild('playerItems') playerItemsElement: ElementRef<HTMLSelectElement>;
 
   constructor() { }
 
@@ -58,13 +61,45 @@ export class CharacterSheetComponent implements OnInit {
     this.character.setAbilityScoreValue(name, Number(value));
   }
 
-  addItem(itemName: string, itemInput: HTMLInputElement){
+  addItem(itemName: string, itemInput: HTMLInputElement) {
     const itemToAdd = this.items.find(item => item.name === itemName);
-    if(!itemToAdd){
+    if (!itemToAdd) {
       throw new Error(`Item ${itemName} not found`);
     }
     this.character.items.push(itemToAdd);
     this.itemInputElement.nativeElement.value = "";
+  }
+
+  removeItems(items: Item[]){
+    console.log('Called remove items', items);
+    const itemsExcludingRemoved = this.character.items.filter(x => !items.includes(x));
+    this.character.resetItems(itemsExcludingRemoved);
+    this.hideItemsContextMenu();
+  }
+
+  showItemsContextMenu($mouseEvent: MouseEvent) {
+    $mouseEvent.preventDefault();
+    this.shouldShowItemsContextMenu = true;
+    setTimeout(() => {
+      const menu = document.getElementById('item-context-menu');
+      menu.style.position = 'fixed';
+      menu.style.left = $mouseEvent.x.toString() + 'px';
+      menu.style.top = $mouseEvent.y.toString() + 'px';
+    }, 1);
+  }
+
+  hideItemsContextMenu(){
+    this.shouldShowItemsContextMenu = false;
+  }
+
+  getSelectedItems() {
+    //todo: get positions of elements to use for removal
+    const selectedOptionElements = this.playerItemsElement.nativeElement.selectedOptions;
+    let values = [];
+    for (let element of Array.from(selectedOptionElements)) {
+      values.push(element.value);
+    }
+    return values;
   }
 
 }

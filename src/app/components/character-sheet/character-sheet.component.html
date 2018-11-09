@@ -148,9 +148,9 @@
             <div class="field">
               <div class="control">
                 <div class="select is-multiple is-fullwidth">
-                  <select #playerItems="ngModel" [(ngModel)]="character.items" multiple size="7">
+                  <select #playerItems [(ngModel)]="character.items" multiple size="7">
                     <option disabled class="has-text-weight-bold has-text-centered">Items</option>
-                    <option *ngFor="let item of character.items" [ngValue]="item" [title]="item.name">{{item.name}}</option>
+                    <option *ngFor="let item of character.items" [ngValue]="item" [title]="item.name" (contextmenu)="showItemsContextMenu($event)">{{item.name}}</option>
                   </select>
                 </div>
               </div>
@@ -231,3 +231,5 @@
     </div>
   </div>
 </div>
+
+<item-context-menu *ngIf="shouldShowItemsContextMenu" [items]="getSelectedItems()" (remove)="removeItems($event)" (close)="hideItemsContextMenu()" id="item-context-menu"></item-context-menu>

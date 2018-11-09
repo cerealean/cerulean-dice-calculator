@@ -91,6 +91,10 @@ export class Character {
         return this.getSkill(name).getValue(this.proficiencyBonus);
     }
 
+    public resetItems(items: Item[]){
+        this._items = items;
+    }
+
     private getAbilityScore(name: AbilityScoreName): AbilityScore {
         return this.abilityScores.get(name);
     }
